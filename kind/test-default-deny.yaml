@@ -1,0 +1,14 @@
+# Enforcement smoke test for kind/calico.yaml: deny all ingress to pods in "default".
+# Ingress-only on purpose, so DNS (egress) still works and a timeout proves the policy.
+#
+#   kubectl apply -f kind/test-default-deny.yaml
+#   kubectl delete -f kind/test-default-deny.yaml   # undo
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-default-deny
+  namespace: default
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
