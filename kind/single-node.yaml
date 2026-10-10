@@ -1,0 +1,12 @@
+# Node image = v1.35.8, the version the CKA/CKS exams run (as of 2026-10). kind v0.33.0
+# requires the @sha256 digest. Kept in a file so the create command stays short
+# (long pasted lines get split by the terminal).
+#
+# Plain 1-node cluster with the default CNI, for most questions:
+#
+#   kind create cluster --name cka --config kind/single-node.yaml
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    image: kindest/node:v1.35.8@sha256:07b2536e30b803ed61d1677a79df6115f798ce64c80f9e22f6ed45afd09323c0
